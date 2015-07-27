@@ -1,0 +1,47 @@
+{
+	"name": "QuickSearchLookup",
+	"version": "0.1.0",
+	"author": [
+		"Florian Schmidt"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:QuickSearchLookup",
+	"descriptionmsg": "quicksearchlookup-desc",
+	"type": "other",
+	"MessagesDirs": {
+		"QuickSearchLookup": [
+			"i18n"
+		]
+	},
+	"Hooks": {
+		"ShowSearchHitTitle": [
+			"QuickSearchLookupHooks::onShowSearchHitTitle"
+		],
+		"SpecialSearchSetupEngine": [
+			"QuickSearchLookupHooks::onSpecialSearchSetupEngine"
+		],
+		"SpecialSearchResultsAppend": [
+			"QuickSearchLookupHooks::onSpecialSearchResultsAppend"
+		]
+	},
+	"ResourceModules": {
+		"ext.QuickSearchLookup": {
+			"position": "top",
+			"styles": "resources/ext.QuickSearchLookup/ext.QuickSearchLookup.css"
+		},
+		"ext.QuickSearchLookup.script": {
+			"scripts": "resources/ext.QuickSearchLookup.script/ext.QuickSearchLookup.script.js"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "QuickSearchLookup"
+	},
+	"AutoloadClasses": {
+		"QuickSearchLookup": "includes/QuickSearchLookup.php",
+		"QuickSearchLookupHooks": "includes/QuickSearchLookup.hooks.php"
+	},
+	"ConfigRegistry": {
+		"quicksearchlookup": "GlobalVarConfig::newInstance"
+	},
+	"manifest_version": 1
+}

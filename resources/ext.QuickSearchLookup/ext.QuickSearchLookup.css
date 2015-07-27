@@ -1,0 +1,50 @@
+.hidden {
+	display: none !important;
+}
+
+.searchresults {
+	float: left;
+	width: 55%;
+	display: inline-block;
+	padding-right: 4%;
+}
+
+.mw-search-quicklookup {
+	width: 40%;
+	margin-top: 1em;
+	display: inline-block;
+}
+
+.mw-search-quicklookup-image-cross {
+	width: 100%;
+	height: auto;
+	margin-bottom: 1em;
+	clear: both;
+}
+
+.mw-search-quicklookup-image-upright {
+	height: auto;
+	width: auto;
+	max-width: 30%;
+	float:right;
+	margin-left: 0.5em;
+}
+
+.mw-search-quicklookup-readmore {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+}
+
+.mw-search-quicklookup-expand {
+	float: right;
+	margin: 0 0 0.3em !important;
+}
+
+.mw-search-quicklookup-osm {
+	margin-top: 0.3em;
+}
+
+.mw-search-quicklookup-textmargin {
+	margin-bottom: 40px;
+}
