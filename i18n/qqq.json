@@ -1,6 +1,10 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
 	"quicksearchlookup-desc": "{{desc|name=QuickSearchLookup|url=https://www.mediawiki.org/wiki/Extension:QuickSearchLookup}}",
-	"quicksearchlookup-readmore": "Link label for the 'Read more' button for the first search result.",
+	"quicksearchlookup-readmore": "Link label for the 'Read more' button for the first search result.\n{{Identical|Read more}}",
 	"quicksearchlookup-expand": "Button label to expand the OSM map"
 }
