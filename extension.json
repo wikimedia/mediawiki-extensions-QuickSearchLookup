@@ -21,6 +21,9 @@
 		],
 		"SpecialSearchResultsAppend": [
 			"QuickSearchLookupHooks::onSpecialSearchResultsAppend"
+		],
+		"UnitTestsList": [
+			"QuickSearchLookupHooks::onUnitTestsList"
 		]
 	},
 	"ResourceModules": {

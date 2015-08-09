@@ -17,7 +17,7 @@ class QuickSearchLookup {
 	 *
 	 * @param RequestContext $context
 	 */
-	public function __construct( RequestContext $context ) {
+	public function __construct( IContextSource $context ) {
 		$this->context = $context;
 	}
 
@@ -31,6 +31,14 @@ class QuickSearchLookup {
 			self::$instance = new self( RequestContext::getMain() );
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Set a main instance.
+	 * @param QuickSearchLookup|null $instance
+	 */
+	public static function setInstance( $instance ) {
+		self::$instance = $instance;
 	}
 
 	/**
@@ -60,13 +68,16 @@ class QuickSearchLookup {
 	public function setFirstResult( $titleTerm ) {
 		if ( $titleTerm instanceof Title && $titleTerm->exists() ) {
 			$this->setTitle( $titleTerm );
-		} else {
+			return true;
+		} elseif ( is_string( $titleTerm ) ) {
 			// check, if the term is the exact name of a title in this wiki
 			$title = Title::newFromText( $titleTerm );
 			if ( $title && $title->exists() ) {
 				$this->setTitle( $title );
+				return true;
 			}
 		}
+		return false;
 	}
 
 	/**
@@ -275,9 +286,11 @@ class QuickSearchLookup {
 			);
 			$api = new ApiMain( $params );
 			$api->execute();
-			$data = $api->getResultData();
+			$data = $api->getResult()->getResultData();
 			foreach ( $data['query']['pages'] as $id => $d ) {
-				$this->metadata = $d;
+				if ( isset( $d['pageid'] ) ) {
+					$this->metadata = $d;
+				}
 			}
 		}
 		return $this->metadata;
@@ -293,7 +306,7 @@ class QuickSearchLookup {
 	private function getTextExtract( $title ) {
 		// try to get text from TextExtracts
 		$page = $this->getPageMeta( $title );
-		if ( $page && isset( $page['extract'] ) ) {
+		if ( $page && isset( $page['extract']['*'] ) ) {
 			return $page['extract']['*'];
 		}
 

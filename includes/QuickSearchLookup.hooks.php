@@ -38,4 +38,16 @@ class QuickSearchLookupHooks {
 	public static function onSpecialSearchResultsAppend( SpecialSearch $specialSearch, OutputPage $output ) {
 		QuickSearchLookup::getMain()->outputLookup( $output );
 	}
+
+	/**
+	 * UnitTestsList hook handler
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
+	 *
+	 * @param array $files
+	 * @return bool
+	 */
+	public static function onUnitTestsList( &$files ) {
+		$files[] = __DIR__ . '/../tests/phpunit';
+		return true;
+	}
 }
