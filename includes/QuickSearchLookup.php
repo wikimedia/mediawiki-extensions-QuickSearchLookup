@@ -213,7 +213,6 @@ class QuickSearchLookup {
 				$button = new OOUI\ButtonWidget( array(
 					'label' => $this->msg( 'quicksearchlookup-readmore' )->text(),
 					'href' => $this->title->getLocalUrl(),
-					'flags' => array( 'constructive', 'primary' ),
 				) );
 				$button->addClasses( array(
 					'mw-search-quicklookup-readmore'
