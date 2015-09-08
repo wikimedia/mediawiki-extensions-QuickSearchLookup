@@ -287,9 +287,9 @@ class QuickSearchLookup {
 			$api = new ApiMain( $params );
 			$api->execute();
 			$data = $api->getResult()->getResultData();
-			foreach ( $data['query']['pages'] as $id => $d ) {
-				if ( isset( $d['pageid'] ) ) {
-					$this->metadata = $d;
+			foreach ( $data['query']['pages'] as $id => $page ) {
+				if ( isset( $page['pageid'] ) ) {
+					$this->metadata = $page;
 				}
 			}
 		}
