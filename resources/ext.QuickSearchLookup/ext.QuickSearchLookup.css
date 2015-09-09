@@ -16,7 +16,8 @@
 }
 
 .mw-search-quicklookup-image-cross {
-	width: 100%;
+	max-width: 100%;
+	max-height: 18em;
 	height: auto;
 	margin-bottom: 1em;
 	clear: both;
