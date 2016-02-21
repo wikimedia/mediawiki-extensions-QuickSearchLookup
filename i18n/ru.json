@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"SmartNart12"
+			"SmartNart12",
+			"Okras"
 		]
 	},
+	"quicksearchlookup-desc": "Добавляет панель с информацией о первых результатах поиска на страницу результатов поиска.",
 	"quicksearchlookup-readmore": "",
 	"quicksearchlookup-expand": ""
 }
