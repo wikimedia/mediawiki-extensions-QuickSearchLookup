@@ -2,6 +2,7 @@
 
 /**
  * @group Extensions
+ * @group Database
  */
 class QuickSearchLooupTest extends MediaWikiTestCase {
 	protected function setUp() {
@@ -60,9 +61,9 @@ class QuickSearchLooupTest extends MediaWikiTestCase {
 	public function getTitleResults() {
 		return array(
 			array( 'BogusTest', false ),
-			array( 'Main_Page', true ),
+			array( 'UTPage', true ),
 			array( Title::newFromText( 'BogusTest' ), false ),
-			array( Title::newMainPage(), true ),
+			array( Title::newFromText( 'UTPage' ), true ),
 		);
 	}
 }

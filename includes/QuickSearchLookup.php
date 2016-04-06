@@ -156,7 +156,7 @@ class QuickSearchLookup {
 				// the ButtonWidget
 				$layout = new OOUI\Layout();
 				$layout
-					->appendContent( new OOUI\HtmlSnippet( $text ) )
+					->appendContent( $text )
 					->addClasses( array(
 						'mw-search-quicklookup-text',
 						// this class adds space between the text and the read more button (which is positioned
