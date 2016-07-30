@@ -355,22 +355,23 @@ class QuickSearchLookup {
 	 * Helper to generate a list of parameters for the "params" url parameter.
 	 *
 	 * @param array $data Data to check and add in key/value format
-	 * @return String
+	 * @return string
 	 */
 	private function buildOSMParams( array $data ) {
 		$res = '';
 		// build the params for the URL
-		if ( $coord['lat'] < 0 ) {
-			$res .= $coord['lat'] . '_S_';
+		if ( $data['lat'] < 0 ) {
+			$res .= $data['lat'] . '_S_';
 		} else {
-			$res .= $coord['lat'] . '_N_';
+			$res .= $data['lat'] . '_N_';
 		}
 
-		if ( $coord['long'] < 0 ) {
-			$res .= $coord['lon'] . '_W_';
+		if ( $data['long'] < 0 ) {
+			$res .= $data['lon'] . '_W_';
 		} else {
-			$res .= $coord['lon'] . '_E_';
+			$res .= $data['lon'] . '_E_';
 		}
+		unset( $data['lat'], $data['lon'] );
 		foreach ( $data as $type => $info ) {
 			if ( $info ) {
 				$res .= '_' . $type . ':' . $info;
