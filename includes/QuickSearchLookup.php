@@ -170,19 +170,9 @@ class QuickSearchLookup {
 					// add the JavaScript module to expand the map
 					$out->addModules( array( 'ext.QuickSearchLookup.script' ) );
 
-					// build the params for the URL
-					$params = $coord['lat'] . '_N_' . $coord['lon'] . '_W';
-					// lat and long has to be nulled to avoid duble adding them in self::buildOSMParams
-					$coord['lat'] = null;
-					$coord['lon'] = null;
-					$addParams = $this->buildOSMParams( $coord );
-					// add additional params, if there are any
-					if ( $addParams ) {
-						$params .= $addParams;
-					}
 					// add the params to the url params list
 					$urlParamsArray = array(
-						'params' => $params,
+						'params' => $this->buildOSMParams( $coord ),
 						'title' => $title,
 						'lang' => $wgContLang->getCode(),
 						'uselang' => $wgLang->getCode(),
@@ -369,6 +359,18 @@ class QuickSearchLookup {
 	 */
 	private function buildOSMParams( array $data ) {
 		$res = '';
+		// build the params for the URL
+		if ( $coord['lat'] < 0 ) {
+			$res .= $coord['lat'] . '_S_';
+		} else {
+			$res .= $coord['lat'] . '_N_';
+		}
+
+		if ( $coord['long'] < 0 ) {
+			$res .= $coord['lon'] . '_W_';
+		} else {
+			$res .= $coord['lon'] . '_E_';
+		}
 		foreach ( $data as $type => $info ) {
 			if ( $info ) {
 				$res .= '_' . $type . ':' . $info;
