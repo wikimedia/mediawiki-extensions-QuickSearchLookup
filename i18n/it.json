@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Statix64"
+			"Statix64",
+			"Selven"
 		]
 	},
+	"quicksearchlookup-desc": "Aggiunge un Pannello con informazioni sul primo risultato della pagina di ricerca.",
 	"quicksearchlookup-readmore": "Per saperne di più",
 	"quicksearchlookup-expand": "Espandi la mappa"
 }
