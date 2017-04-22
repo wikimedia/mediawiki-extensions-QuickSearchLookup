@@ -258,7 +258,7 @@ class QuickSearchLookup {
 	 * @param String $title The title to lookup
 	 * @return array The page meta data
 	 */
-	private function getPageMeta( $title ) {
+	protected function getPageMeta( $title ) {
 		if ( !$this->metadata ) {
 			$params = new DerivativeRequest(
 				$this->getRequest(),

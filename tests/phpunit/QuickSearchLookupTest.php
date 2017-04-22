@@ -5,6 +5,19 @@
  * @group Database
  */
 class QuickSearchLooupTest extends MediaWikiTestCase {
+	private $apiResult = [
+		'pageid' => 4,
+		'ns' => 0,
+		'title' => 'Test',
+		'extract' => 'Test',
+		'thumbnail' => [
+			'source' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/test.png',
+			'width' => 800,
+			'height' => 649
+		],
+		'pageimage' => 'test.png'
+	];
+
 	protected function setUp() {
 		parent::setUp();
 		QuickSearchLookup::setInstance( new MockQuickLookupTest() );
@@ -26,7 +39,16 @@ class QuickSearchLooupTest extends MediaWikiTestCase {
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setRequest( $request );
 		$context->setOutput( new OutputPage( $context ) );
-		return new QuickSearchLookup( $context );
+		$mock = $this->getMockBuilder( QuickSearchLookup::class )
+			->setConstructorArgs( [ $context ] )
+			->setMethods( [ 'getPageMeta' ] )
+			->getMock();
+		$mock->expects( $this->any() )
+			->method( 'getPageMeta' )
+			->withAnyParameters()
+			->will( $this->returnValue( $this->apiResult ) );
+
+		return $mock;
 	}
 
 	/**
@@ -34,7 +56,7 @@ class QuickSearchLooupTest extends MediaWikiTestCase {
 	 */
 	public function testSetFirstResult( $title, $result ) {
 		$qsl = $this->makeQSL();
-		$this->assertEquals( $qsl->setFirstResult( $title ), $result );
+		$this->assertEquals( $result, $qsl->setFirstResult( $title ) );
 	}
 
 	/**
@@ -43,7 +65,7 @@ class QuickSearchLooupTest extends MediaWikiTestCase {
 	public function testNeedsFirstResult( $title, $result ) {
 		$qsl = $this->makeQSL();
 		$qsl->setFirstResult( $title );
-		$this->assertEquals( $qsl->needsFirstResult(), !$result );
+		$this->assertEquals( !$result, $qsl->needsFirstResult() );
 	}
 
 	/**
