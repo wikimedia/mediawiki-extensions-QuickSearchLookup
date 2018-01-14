@@ -4,8 +4,11 @@
 			"Cwlin0416",
 			"EagerLin",
 			"Liuxinyu970226",
-			"LNDDYL"
+			"LNDDYL",
+			"Kly"
 		]
 	},
-	"quicksearchlookup-readmore": "延伸閱讀"
+	"quicksearchlookup-desc": "添加帶有首次搜尋結果相關資訊的面板至搜尋結果頁面上",
+	"quicksearchlookup-readmore": "延伸閱讀",
+	"quicksearchlookup-expand": "展開地圖"
 }
