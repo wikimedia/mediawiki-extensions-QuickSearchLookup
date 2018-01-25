@@ -3,6 +3,7 @@
 /**
  * @group Extensions
  * @group Database
+ * @covers QuickSearchLookup
  */
 class QuickSearchLooupTest extends MediaWikiTestCase {
 	private $apiResult = [
