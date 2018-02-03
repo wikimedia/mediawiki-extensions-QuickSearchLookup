@@ -28,7 +28,6 @@
 	},
 	"ResourceModules": {
 		"ext.QuickSearchLookup": {
-			"position": "top",
 			"styles": "resources/ext.QuickSearchLookup/ext.QuickSearchLookup.css"
 		},
 		"ext.QuickSearchLookup.script": {
