@@ -53,6 +53,7 @@ class QuickSearchLookup {
 	/**
 	 * Helper function, same as RequestContext::msg()
 	 *
+	 * @param string $key
 	 * @return Message
 	 */
 	private function msg( $key ) {
@@ -64,6 +65,8 @@ class QuickSearchLookup {
 	 *
 	 * @param String|Title $titleTerm The Title object of the frist search result,
 	 * or a search term user as a first Title
+	 *
+	 * @return bool
 	 */
 	public function setFirstResult( $titleTerm ) {
 		if ( $titleTerm instanceof Title && $titleTerm->exists() ) {
@@ -123,8 +126,8 @@ class QuickSearchLookup {
 			// the panel is build with OOUI, enable it
 			$out->enableOOUI();
 			$title = $this->title->getText();
-			$elements = array();
-			$out->addModuleStyles( array( 'ext.QuickSearchLookup' ) );
+			$elements = [];
+			$out->addModuleStyles( [ 'ext.QuickSearchLookup' ] );
 
 			// get the info about the Page images added to the firs title
 			$imageInfo = $this->getPageImage( $title );
@@ -134,17 +137,17 @@ class QuickSearchLookup {
 				// get the orientation for this image
 				$orientation = ( $imageInfo['thumb']['width'] < $imageInfo['thumb']['height'] ? 'upright' : 'cross' );
 				$imageTag = new OOUI\Tag( 'img' );
-				$imageTag->setAttributes( array(
+				$imageTag->setAttributes( [
 					'src' => $imageInfo['thumb']['source'],
 					'class' => 'mw-search-quicklookup-image mw-search-quicklookup-image-' . $orientation,
-				) );
+				] );
 				$imageLink = Title::newFromText( $imageInfo['pageimage'], NS_FILE );
 				$linkTag = new OOUI\Tag( 'a' );
 				$linkTag
-					->setAttributes( array(
+					->setAttributes( [
 						'href' => $imageLink->getLocalURL(),
 						'class' => 'image',
-					) )
+					] )
 					->appendContent( $imageTag );
 				$elements[] = $linkTag;
 			}
@@ -157,26 +160,26 @@ class QuickSearchLookup {
 				$layout = new OOUI\Layout();
 				$layout
 					->appendContent( $text )
-					->addClasses( array(
+					->addClasses( [
 						'mw-search-quicklookup-text',
 						// this class adds space between the text and the read more button (which is positioned
 						// aboslute) and will be removed if the expand map button is present
 						'mw-search-quicklookup-textmargin'
-					) );
+					] );
 
 				// if there are page coordinates, add an OSM map
 				$coord = $this->getPageCoord( $title );
 				if ( $coord ) {
 					// add the JavaScript module to expand the map
-					$out->addModules( array( 'ext.QuickSearchLookup.script' ) );
+					$out->addModules( [ 'ext.QuickSearchLookup.script' ] );
 
 					// add the params to the url params list
-					$urlParamsArray = array(
+					$urlParamsArray = [
 						'params' => $this->buildOSMParams( $coord ),
 						'title' => $title,
 						'lang' => $wgContLang->getCode(),
 						'uselang' => $wgLang->getCode(),
-					);
+					];
 					// convert array to url encoded list
 					$urlParams = wfArrayToCgi( $urlParamsArray );
 					// built the complete URL
@@ -184,22 +187,22 @@ class QuickSearchLookup {
 
 					// create a new iframe tag to add OSM map under the text snippet
 					$iframe = new OOUI\Tag( 'iframe' );
-					$iframe->setAttributes( array(
+					$iframe->setAttributes( [
 						'id' => 'openstreetmap',
 						'class' => 'mw-search-quicklookup-osm',
 						'src' => $iframeLink,
 						'width' => '100%',
 						'height' => '100%',
-					) );
+					] );
 					// the expand button allows a user to make the map bigger without clicking on permalink
-					$expandButton = new OOUI\ButtonWidget( array(
+					$expandButton = new OOUI\ButtonWidget( [
 						'label' => $this->msg( 'quicksearchlookup-expand' )->text(),
-					) );
-					$expandButton->addClasses( array(
+					] );
+					$expandButton->addClasses( [
 						'mw-search-quicklookup-expand',
 						// the button is hidden by default and will be visible if JS is enabled
 						'hidden'
-					) );
+					] );
 					// add OSM map to the layout
 					$layout
 						->appendContent( $iframe );
@@ -211,13 +214,13 @@ class QuickSearchLookup {
 			// if there are elements, add them to the output in a PanelLayout
 			if ( $elements ) {
 				// build a ButtonWidget, with a custom class to position is absolute
-				$button = new OOUI\ButtonWidget( array(
+				$button = new OOUI\ButtonWidget( [
 					'label' => $this->msg( 'quicksearchlookup-readmore' )->text(),
 					'href' => $this->title->getLocalUrl(),
-				) );
-				$button->addClasses( array(
+				] );
+				$button->addClasses( [
 					'mw-search-quicklookup-readmore'
-				) );
+				] );
 
 				// if there is an OSM map, show an "Expand" button at the right sode
 				if ( isset( $expandButton ) ) {
@@ -227,23 +230,23 @@ class QuickSearchLookup {
 				// then add the read more button
 				$elements[] = new OOUI\FieldLayout( $button );
 
-				$panel = new OOUI\PanelLayout( array(
+				$panel = new OOUI\PanelLayout( [
 					'expanded' => false,
 					'padded' => true,
 					'framed' => true,
-				) );
+				] );
 
 				$panel->appendContent(
-					new OOUI\FieldsetLayout( array(
+					new OOUI\FieldsetLayout( [
 						'label' => $title,
 						'items' => $elements,
-					) )
+					] )
 				);
 				$out->addHtml( Html::rawElement(
 						'div',
-						array(
+						[
 							'class' => 'mw-search-quicklookup',
-						),
+						],
 						$panel
 					)
 				);
@@ -262,7 +265,7 @@ class QuickSearchLookup {
 		if ( !$this->metadata ) {
 			$params = new DerivativeRequest(
 				$this->getRequest(),
-				array(
+				[
 					'action' => 'query',
 					'prop' => 'extracts|pageimages|coordinates',
 					'pithumbsize' => 800,
@@ -271,7 +274,7 @@ class QuickSearchLookup {
 					'exintro' => true,
 					'coprop' => 'type|name|dim|country|region',
 					'titles' => $title,
-				),
+				],
 				true
 			);
 			$api = new ApiMain( $params );
@@ -290,7 +293,7 @@ class QuickSearchLookup {
 	 * Get the TextExtract specific data from page meta data,
 	 * if any, otherwise an empty string.
 	 *
-	 * @param String Title The title to lookup
+	 * @param String $title The title to lookup
 	 * @return string
 	 */
 	private function getTextExtract( $title ) {
@@ -307,14 +310,14 @@ class QuickSearchLookup {
 	 * Get the PageImages specific data from page meta data,
 	 * if any, otherwise false.
 	 *
-	 * @param String Title The title to lookup
+	 * @param String $title The title to lookup
 	 * @return array|bool
 	 */
 	private function getPageImage( $title ) {
 		// try to get a page image
 		$page = $this->getPageMeta( $title );
 		if ( $page && isset( $page['thumbnail'] ) ) {
-			$data = array( 'thumb' => $page['thumbnail'] );
+			$data = [ 'thumb' => $page['thumbnail'] ];
 			$data['pageimage'] = $page['pageimage'];
 			return $data;
 		}
@@ -325,7 +328,7 @@ class QuickSearchLookup {
 	/**
 	 * Extracts any GeoData related information from the API respond.
 	 *
-	 * @param String Title The title to lookup
+	 * @param String $title The title to lookup
 	 * @return array|bool
 	 */
 	private function getPageCoord( $title ) {
@@ -339,13 +342,13 @@ class QuickSearchLookup {
 				return false;
 			}
 			$info = $page['coordinates'][0];
-			return array(
+			return [
 				'lat' => $info['lat'],
 				'lon' => $info['lon'],
 				'region' => isset( $info['region'] ) ? $info['region'] : null,
 				'type' => isset( $info['type'] ) ? $info['type'] : null,
 				'dim' => isset( $info['dim'] ) ? $info['dim'] : null,
-			);
+			];
 		}
 
 		return false;
