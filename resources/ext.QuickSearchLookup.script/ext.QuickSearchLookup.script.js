@@ -1,4 +1,4 @@
-( function ( mw, $ ) {
+( function () {
 	var $expandButton = $( '.mw-search-quicklookup-expand' ),
 		$text = $( '.mw-search-quicklookup-text' ),
 		$map = $( '.mw-search-quicklookup-osm' );
@@ -23,4 +23,4 @@
 			ev.preventDefault();
 		} );
 	}
-}( mediaWiki, jQuery ) );
+}() );
