@@ -37,7 +37,7 @@
 	},
 	"AutoloadClasses": {
 		"QuickSearchLookup": "includes/QuickSearchLookup.php",
-		"QuickSearchLookupHooks": "includes/QuickSearchLookup.hooks.php"
+		"QuickSearchLookupHooks": "includes/QuickSearchLookupHooks.php"
 	},
 	"ConfigRegistry": {
 		"quicksearchlookup": "GlobalVarConfig::newInstance"
