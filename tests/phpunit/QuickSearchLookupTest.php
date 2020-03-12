@@ -5,7 +5,7 @@
  * @group Database
  * @covers QuickSearchLookup
  */
-class QuickSearchLooupTest extends MediaWikiTestCase {
+class QuickSearchLookupTest extends MediaWikiTestCase {
 	private $apiResult = [
 		'pageid' => 4,
 		'ns' => 0,
@@ -31,7 +31,7 @@ class QuickSearchLooupTest extends MediaWikiTestCase {
 
 	private function makeQSL( $url = '/' ) {
 		$params = wfParseUrl( wfExpandUrl( $url ) );
-		$q = array();
+		$q = [];
 		if ( isset( $params['query'] ) ) {
 			$q = wfCgiToArray( $params['query'] );
 		}
@@ -82,15 +82,16 @@ class QuickSearchLooupTest extends MediaWikiTestCase {
 	}
 
 	public function getTitleResults() {
-		return array(
-			array( 'BogusTest', false ),
-			array( 'UTPage', true ),
-			array( Title::newFromText( 'BogusTest' ), false ),
-			array( Title::newFromText( 'UTPage' ), true ),
-		);
+		return [
+			[ 'BogusTest', false ],
+			[ 'UTPage', true ],
+			[ Title::newFromText( 'BogusTest' ), false ],
+			[ Title::newFromText( 'UTPage' ), true ],
+		];
 	}
 }
 
+// phpcs:ignore Generic.Files.OneObjectStructurePerFile.MultipleFound
 class MockQuickLookupTest {
 	public function __call( $name, $args ) {
 		throw new Exception( 'Functions shouldn\'t call the singleton itself.' );
