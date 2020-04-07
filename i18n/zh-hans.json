@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226",
-			"EagerLin"
+			"EagerLin",
+			"Liuxinyu970226"
 		]
 	},
 	"quicksearchlookup-desc": "添加一个带有首个搜索结果信息的面板至搜索结果页面。",
