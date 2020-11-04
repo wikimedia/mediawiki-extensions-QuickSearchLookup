@@ -3,13 +3,13 @@
 class QuickSearchLookup {
 	private static $instance = null;
 
-	/** @var Title|null $title the Title object for this QuickSearchLookup object */
+	/** @var Title|null the Title object for this QuickSearchLookup object */
 	private $title;
 
-	/** @var RequestContext $context Main RequestContext object */
+	/** @var RequestContext Main RequestContext object */
 	private $context;
 
-	/** @var array $metadata Page metadata */
+	/** @var array Page metadata */
 	private $metadata;
 
 	/**
@@ -63,7 +63,7 @@ class QuickSearchLookup {
 	/**
 	 * The given title will be used as the Title in this QuickSearchLookup object.
 	 *
-	 * @param String|Title $titleTerm The Title object of the frist search result,
+	 * @param string|Title $titleTerm The Title object of the frist search result,
 	 * or a search term user as a first Title
 	 *
 	 * @return bool
@@ -258,7 +258,7 @@ class QuickSearchLookup {
 	 * If not already done, performs an internal Api request to get
 	 * page data like page images and a short text snippet.
 	 *
-	 * @param String $title The title to lookup
+	 * @param string $title The title to lookup
 	 * @return array The page meta data
 	 */
 	protected function getPageMeta( $title ) {
@@ -293,7 +293,7 @@ class QuickSearchLookup {
 	 * Get the TextExtract specific data from page meta data,
 	 * if any, otherwise an empty string.
 	 *
-	 * @param String $title The title to lookup
+	 * @param string $title The title to lookup
 	 * @return string
 	 */
 	private function getTextExtract( $title ) {
@@ -310,7 +310,7 @@ class QuickSearchLookup {
 	 * Get the PageImages specific data from page meta data,
 	 * if any, otherwise false.
 	 *
-	 * @param String $title The title to lookup
+	 * @param string $title The title to lookup
 	 * @return array|bool
 	 */
 	private function getPageImage( $title ) {
@@ -328,7 +328,7 @@ class QuickSearchLookup {
 	/**
 	 * Extracts any GeoData related information from the API respond.
 	 *
-	 * @param String $title The title to lookup
+	 * @param string $title The title to lookup
 	 * @return array|bool
 	 */
 	private function getPageCoord( $title ) {

@@ -5,7 +5,7 @@ class QuickSearchLookupHooks {
 	 * If there isn't a first title already, set it here.
 	 *
 	 * @param Title &$title Title object of the list item
-	 * @param String &$text Text to use for the link
+	 * @param string &$text Text to use for the link
 	 * @param Result $result
 	 * @param Terms $terms
 	 * @param Page $page
@@ -21,7 +21,7 @@ class QuickSearchLookupHooks {
 	 * If there isn't a first title already, set it here.
 	 *
 	 * @param SpecialSearch $page
-	 * @param String $profile current search profile
+	 * @param string $profile current search profile
 	 * @param SearchEngine $searchEngine the search engine
 	 */
 	public static function onSpecialSearchSetupEngine( SpecialSearch $page, $profile, $searchEngine ) {
