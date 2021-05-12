@@ -42,7 +42,7 @@ class QuickSearchLookupTest extends MediaWikiTestCase {
 		$context->setOutput( new OutputPage( $context ) );
 		$mock = $this->getMockBuilder( QuickSearchLookup::class )
 			->setConstructorArgs( [ $context ] )
-			->setMethods( [ 'getPageMeta' ] )
+			->onlyMethods( [ 'getPageMeta' ] )
 			->getMock();
 		$mock->expects( $this->any() )
 			->method( 'getPageMeta' )
