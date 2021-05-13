@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class QuickSearchLookup {
 	private static $instance = null;
 
@@ -118,7 +120,7 @@ class QuickSearchLookup {
 	 * @param OutputPage $out
 	 */
 	public function outputLookup( OutputPage $out ) {
-		global $wgContLang, $wgLang;
+		global $wgLang;
 
 		// only add the panel, if the given title exist to avoid
 		// an empty panel
@@ -177,7 +179,7 @@ class QuickSearchLookup {
 					$urlParamsArray = [
 						'params' => $this->buildOSMParams( $coord ),
 						'title' => $title,
-						'lang' => $wgContLang->getCode(),
+						'lang' => MediaWikiServices::getInstance()->getContentLanguage()->getCode(),
 						'uselang' => $wgLang->getCode(),
 					];
 					// convert array to url encoded list
