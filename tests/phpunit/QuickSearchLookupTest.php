@@ -19,12 +19,12 @@ class QuickSearchLookupTest extends MediaWikiTestCase {
 		'pageimage' => 'test.png'
 	];
 
-	protected function setUp() : void {
+	protected function setUp(): void {
 		parent::setUp();
 		QuickSearchLookup::setInstance( new MockQuickLookupTest() );
 	}
 
-	protected function tearDown() : void {
+	protected function tearDown(): void {
 		QuickSearchLookup::setInstance( null );
 		parent::tearDown();
 	}
