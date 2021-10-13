@@ -5,7 +5,7 @@
  * @group Database
  * @covers QuickSearchLookup
  */
-class QuickSearchLookupTest extends MediaWikiTestCase {
+class QuickSearchLookupTest extends MediaWikiIntegrationTestCase {
 	private $apiResult = [
 		'pageid' => 4,
 		'ns' => 0,
