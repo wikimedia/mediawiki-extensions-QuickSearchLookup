@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"MirukuPC"
+		]
+	},
+	"quicksearchlookup-desc": "検索結果ページに、最初の検索結果の情報を表示するパネルを追加する。",
+	"quicksearchlookup-readmore": "さらに詳しく",
+	"quicksearchlookup-expand": "マップを拡大する"
+}
