@@ -1,4 +1,5 @@
 {
+	"name": "QuickSearchLookup",
 	"private": true,
 	"scripts": {
 		"test": "grunt test"
