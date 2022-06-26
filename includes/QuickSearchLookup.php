@@ -94,7 +94,12 @@ class QuickSearchLookup {
 		// check for redirects
 		if ( $title->isRedirect() ) {
 			// get the new target (the redirect target)
-			$page = WikiPage::factory( $title );
+			if ( method_exists( MediaWikiServices::class, 'getWikiPageFactory' ) ) {
+				// MW 1.36+
+				$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $title );
+			} else {
+				$page = WikiPage::factory( $title );
+			}
 			if ( !$page->exists() ) {
 				return;
 			}
