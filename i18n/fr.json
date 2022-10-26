@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"VictorBrice",
-			"Wladek92"
+			"Wladek92",
+			"Verdy p"
 		]
 	},
 	"quicksearchlookup-desc": " Ajoute un panneau avec l'information du premier résultat de recherche à la page des résultats de recherche.",
-	"quicksearchlookup-readmore": " Lire la suite",
+	"quicksearchlookup-readmore": "Lire la suite",
 	"quicksearchlookup-expand": "Etendre la carte"
 }
