@@ -4,5 +4,7 @@
 			"Eleassar"
 		]
 	},
-	"quicksearchlookup-readmore": "Več o tem"
+	"quicksearchlookup-desc": "Na stran z zadetki iskanja doda panel s podatki o prvem zadetku iskanja",
+	"quicksearchlookup-readmore": "Več o tem",
+	"quicksearchlookup-expand": "Razširi zemljevid"
 }
