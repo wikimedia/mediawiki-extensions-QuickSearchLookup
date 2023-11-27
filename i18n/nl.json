@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mainframe98"
+			"Mainframe98",
+			"McDutchie"
 		]
 	},
-	"quicksearchlookup-readmore": "Meer lezen"
+	"quicksearchlookup-desc": "Voegt een paneel met informatie over het eerste zoekresultaat toe aan de zoekresultatenpagina",
+	"quicksearchlookup-readmore": "Meer lezen",
+	"quicksearchlookup-expand": "Kaart uitvouwen"
 }
