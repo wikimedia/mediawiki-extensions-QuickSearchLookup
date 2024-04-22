@@ -47,7 +47,7 @@ class QuickSearchLookupTest extends MediaWikiIntegrationTestCase {
 		$mock->expects( $this->any() )
 			->method( 'getPageMeta' )
 			->withAnyParameters()
-			->will( $this->returnValue( $this->apiResult ) );
+			->willReturn( $this->apiResult );
 
 		return $mock;
 	}
