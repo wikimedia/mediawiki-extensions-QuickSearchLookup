@@ -1,5 +1,5 @@
 ( function () {
-	var $expandButton = $( '.mw-search-quicklookup-expand' ),
+	const $expandButton = $( '.mw-search-quicklookup-expand' ),
 		$text = $( '.mw-search-quicklookup-text' ),
 		$map = $( '.mw-search-quicklookup-osm' );
 
@@ -11,7 +11,7 @@
 		// which makes it useless and more confusing (a lot more free, unused space)
 		$text.removeClass( 'mw-search-quicklookup-textmargin' );
 		// add click handler
-		$expandButton.on( 'click', function ( ev ) {
+		$expandButton.on( 'click', ( ev ) => {
 			// hide the button (no way back, once expanded)
 			$expandButton.hide();
 			// expand the map animated to 500px height (width still 100% of the panel)
