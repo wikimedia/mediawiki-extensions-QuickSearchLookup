@@ -33,7 +33,8 @@ class QuickSearchLookupTest extends MediaWikiIntegrationTestCase {
 	}
 
 	private function makeQSL( $url = '/' ) {
-		$params = wfParseUrl( wfExpandUrl( $url ) );
+		$urlUtils = $this->getServiceContainer()->getUrlUtils();
+		$params = $urlUtils->parse( $urlUtils->expand( $url ) );
 		$q = [];
 		if ( isset( $params['query'] ) ) {
 			$q = wfCgiToArray( $params['query'] );
