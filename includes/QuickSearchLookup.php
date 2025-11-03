@@ -1,6 +1,9 @@
 <?php
 
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Request\DerivativeRequest;
+use MediaWiki\Title\Title;
 
 class QuickSearchLookup {
 	private static $instance = null;
