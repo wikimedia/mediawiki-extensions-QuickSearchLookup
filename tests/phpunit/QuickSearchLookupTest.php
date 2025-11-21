@@ -56,6 +56,10 @@ class QuickSearchLookupTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider getTitleResults
 	 */
 	public function testSetFirstResult( $title, $result ) {
+		if ( $result ) {
+			// Ensure the page exists
+			$this->getExistingTestPage( $title );
+		}
 		$qsl = $this->makeQSL();
 		$this->assertEquals( $result, $qsl->setFirstResult( $title ) );
 	}
@@ -64,6 +68,10 @@ class QuickSearchLookupTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider getTitleResults
 	 */
 	public function testNeedsFirstResult( $title, $result ) {
+		if ( $result ) {
+			// Ensure the page exists
+			$this->getExistingTestPage( $title );
+		}
 		$qsl = $this->makeQSL();
 		$qsl->setFirstResult( $title );
 		$this->assertEquals( !$result, $qsl->needsFirstResult() );
@@ -73,6 +81,10 @@ class QuickSearchLookupTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider getTitleResults
 	 */
 	public function testOutputLookup( $title, $result ) {
+		if ( $result ) {
+			// Ensure the page exists
+			$this->getExistingTestPage( $title );
+		}
 		$qsl = $this->makeQSL();
 		$request = new RequestContext();
 		$out = $request->getOutput();
