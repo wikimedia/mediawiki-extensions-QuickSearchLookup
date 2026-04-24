@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwangjy9"
+			"Hwangjy9",
+			"Tensama0415"
 		]
 	},
-	"quicksearchlookup-readmore": "더 읽어보기"
+	"quicksearchlookup-desc": "검색 결과 페이지에 첫 번째 검색 결과에 대한 정보를 표시하는 패널을 추가합니다",
+	"quicksearchlookup-readmore": "더 읽어보기",
+	"quicksearchlookup-expand": "지도 확장"
 }
