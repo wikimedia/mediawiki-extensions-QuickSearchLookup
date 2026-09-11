@@ -42,8 +42,5 @@
 		"QuickSearchLookup": "includes/QuickSearchLookup.php",
 		"QuickSearchLookupHooks": "includes/QuickSearchLookupHooks.php"
 	},
-	"ConfigRegistry": {
-		"quicksearchlookup": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
-	},
 	"manifest_version": 1
 }
